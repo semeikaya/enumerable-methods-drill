@@ -243,7 +243,7 @@ console.log(deleteUser(users, 1)); // массив без юзера с id === 1
 
 // функция принимает массив и id пользователя и выводит в консоль его ключ geo
 function getUsersGeo(array, id) {
-array.forEach(function (item) {
+array.find(function (item) {
     if (item.id === id) {
         console.log(item.address.geo); 
     }
@@ -253,7 +253,7 @@ array.forEach(function (item) {
 
 // функция принимает массив и id пользователя, и выводит в консоль всю информацию (весь объект) о компании этого пользователя
 function getUsersCompany(array, id) {
-    array.forEach(function (item) {
+    array.find(function (item) {
         if (item.id === id) {
             console.log(item.company)
         }
@@ -266,7 +266,7 @@ function getUsersCompany(array, id) {
 // Функция возвращает новый массив с измененным номером для указанного пользователя. 
 
 function changePhone(array, id, phone) {
-    const res = array.filter(function (item) {
+    const res = array.map(function (item) {
         if (item.id === id) {
             item.phone = phone
             return item
