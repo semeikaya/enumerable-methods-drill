@@ -221,9 +221,10 @@ getUserById(users, 2); // должен вывести в консоль объе
 
 // функция принимает массив и возвращает новый массив в котором у всех пользователей пропадет поле address
 function removeAddresses(array) {
-    const res = array.filter(function (item) {
-        delete item.address
-        return item
+    const res = array.map(function (item) {
+        const obj =  {...item}
+        delete obj.address
+        return obj
     })
     return res
 }
@@ -234,7 +235,7 @@ console.log(removeAddresses(users));
 // функция принимает массив и id пользователя, который должен быть удален и возвращает новый массив, уже без этого пользователя.
 function deleteUser(array, id) {
     const res = array.filter(function (item) {
-        return item.id !== 1
+        return item.id !== id
     })
     return res
 }
@@ -268,8 +269,7 @@ function getUsersCompany(array, id) {
 function changePhone(array, id, phone) {
     const res = array.map(function (item) {
         if (item.id === id) {
-            item.phone = phone
-            return item
+            return {...item, phone: phone, id: 200}
         }
         return item
     })
